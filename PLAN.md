@@ -1,4 +1,4 @@
-# cli tracker
+# Personal Tracker
 
 ## BASIC Features
 - basic logging
