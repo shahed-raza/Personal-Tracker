@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    WhatsGoingOn: Notes
+{% endblock %}
+
+
+{% block main %}
+<!--
+index page ==> personally resonating quotes, thoughts aligning & fixing my binary (0 or 1) mindset
+               ==> important notes, which i keep forgetting
+               ==> important decisions, i took
+               ==> a broader picture, zoomed-out birdview
+               ==> links to other pages such
+-->
+    <div class=notes-section>
+        <!-- sticky notes style -> important notes -->
+        {% for note in notes %}
+            <div class="note-card">{{ note }}</div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
