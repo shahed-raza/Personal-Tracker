@@ -1,0 +1,65 @@
+body * {
+    /* border: 1px solid gray; */
+    margin: 10px;
+    text-align: center;
+}
+
+body {
+    /* text-align: center; */
+    font-family: helvetica;
+    /* font-weight: 1px; */
+    background-color: black;
+    color: white;
+}
+
+h1.heading {
+    text-align: center;
+}
+
+nav {
+    border: 1px solid white;
+    /* border-radius: 5px; */
+}
+
+ul.header-links-list a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+ul.header-links-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+div.quote-banner {
+    display: flex;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 20px;
+}
+
+table {
+    /* text-align: center; */
+}
+
+div.notes-section {
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    gap: 20px;
+}
+
+div.note-card {
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 30px;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
