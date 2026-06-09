@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <!--
+    index page ==> personally resonating quotes, thoughts aligning & fixing my binary (0 or 1) mindset
+               ==> important notes, which i keep forgetting
+               ==> important decisions, i took
+               ==> a broader picture, zoomed-out birdview
+               ==> links to other pages such
+    logging ==> daily tasks logging
+            ==> distractions logging
+            ==> problems logging
+    to-do ==> daily tasks clarity (just the day's tasks) with estimated time-taken
+          ==> need to make sure, that it reminds me of understanding that ~70-80 is also good
+          ==> maybe just try to calculate the % of the work done (idk how to calculate it)
+
+    reports ==> weekly & monthly of what i did, what happened
+            ==> the obstacles, the progress, anything significant
+            ==> the whole week or month at a glance
+
+    reflection ==> weekly & montly reflection reminders
+               ==> re-calibrate, to look & understand the problems
+
+    roadmaps & timelines ==> to get a clear idea on what all are the things i need to do
+                         ==> and slowly get moving towards them by breaking things down
+    -->
+    <h1 class="heading">{% block title %}{% endblock %}</h1>
+    <nav>
+        <div class="nav-section">
+            <ul class="header-links-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/log">Log</a></li>
+                <li><a href="/todo">To Do</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/reflection">Reflection</a></li>
+                <li><a href="/roadmaps_timeline">Roadmaps & Timelines</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {% if get_flashed_messages() %}
+        <header>
+            <div class="quote-banner">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+    {% endif %}
+
+    <main class="container">
+        {% block main %}{% endblock %}
+    </main>
+    <footer></footer>
+</body>
+
+</html>
