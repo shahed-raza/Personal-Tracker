@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    WhatDidYouDo: Log
+{% endblock %}
+
+{% block main %}
+
+<!--
+logging ==> day-to-day tasks logging
+        ==> distractions logging
+        ==> problems logging
+-->
+
+    <form action="/log" method="post">
+        <div class="styleclass">
+            <input class="styleclass" name="log-today" type="text" placeholder="What did you do today?" autofocus autocomplete="off">
+        </div>
+        <div class="styleclass">
+            <input class="styleclass" name="time-taken" type="number" min="1" max="12" placeholder="How much time did it take?" autofocus autocomplete="off">
+        </div>
+        <!-- log-button class -->
+        <button class="styleclass log-button" type="submit">Log Task</button>
+    </form>
+    <form action="/log" method="post">
+        <div class="styleclass">
+            <input class="styleclass" name="distraction" type="text" placeholder="What were the distractions today?" autofocus autocomplete="off">
+        </div>
+        <!-- log-button class -->
+        <button class="styleclass log-button" type="submit">Log Distraction</button>
+    </form>
+    <form action="/log" method="post">
+        <div class="problem-today">
+            <input class="styleclass" name="problem" type="text" placeholder="What were the problems today?" autofocus autocomplete="off">
+        </div>
+        <!-- log-button class -->
+        <button class="styleclass log-button" type="submit">Log Problem</button>
+    </form>
+
+{% endblock %}
