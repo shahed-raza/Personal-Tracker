@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    WhatWillYouDo: Todo
+{% endblock %}
+
+
+{% block main %}
+
+<!--
+to-do ==> daily tasks clarity (just the day's tasks) with estimated time-taken
+      ==> need to make sure, that it reminds me of understanding that ~70-80 is also good
+      ==> and maybe just try to calculate the % of the work done (idk how to calculate it)
+-->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tasks Today</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if tasks %}
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.name }}<td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>No Tasks Added: Make sure you know what you have to do today</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+
+    <form action="/todo" method="post">
+        <div class="styleclass">
+            <input class="styleclass" name="time-left" type="number" placeholder="Time duration You have left" autofocus autocomplete="off">
+        </div>
+        <div class="styleclass">
+            <button class="styleclass" type="submit">Calculate Time Left</button>
+        </div>
+    </form>
+
+    <div class="time-left-banner">
+        {% if time_left %}
+            {% if time_left.hours != 0 and time_left.minutes != 0 %}
+                You have {{ time_left.hours }} hours and {{ time_left.minutes }} minutes
+            {% elif time_left.hours != 0 and time_left.minutes == 0 %}
+                You have {{ time_left.hours }} hours
+            {% elif time_left.hours == 0 and time_left.minutes != 0 %}
+                You have {{ time_left.minutes }} minutes
+            {% endif %}
+        {% else %}
+            Enter time duration to calculate time left
+        {% endif %}
+    </div>
+
+
+    <form action="/todo" method="post">
+        <div class="styleclass">
+            <input class="styleclass" name="todo-title" type="text" placeholder="What do you want to do today?" autofocus autocomplete="off">
+        </div>
+        <div class="styleclass">
+            <!-- todo-body class -->
+            <textarea class="styleclass todo-body">Body</textarea>
+        </div>
+        <div class="est-time-taken">
+            <input class="styleclass" name="estimated-time-taken" type="number" min="1" max="12" placeholder"Rough Estimation of time taken" autofocus autocomplete="off">
+        <div>
+            <button class="styleclass" type="submit">Add Task</button>
+        </div>
+    </form>
+
+{% endblock %}
