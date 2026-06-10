@@ -9,8 +9,8 @@ CREATE TABLE "logs" (
     "problems" TEXT, -- though null is accepted (cause rarely no problems might be logged), but be sure to clearly ask in the front-end
     "start_time" TEXT, -- optional
     "end_time" TEXT, -- optional
-    "duration_hours" NUMERIC, -- optional
-    "duration_minutes" NUMERIC, -- optional
+    "time_taken_hours" NUMERIC, -- optional
+    "time_takn_minutes" NUMERIC, -- optional
     PRIMARY KEY("id")
 );
 
@@ -40,3 +40,17 @@ CREATE TABLE "notes" (
     "tag" TEXT,
     PRIMARY KEY("id")
 );
+
+CREATE TRIGGER "prevent_created_at_update_notes"
+BEFORE UPDATE OF "created_at" ON "notes"
+FOR EACH ROW
+BEGIN
+    SELECT RAISE(ABORT, "created_at is immutable");
+END;
+
+CREATE TRIGGER "prevent_created_at_update_todos"
+BEFORE UPDATE ON "created_at" ON "todos"
+FOR EACH ROW
+BEGIN
+    SELECT RAISE(ABORT, "created_at is immutabe");
+END;
