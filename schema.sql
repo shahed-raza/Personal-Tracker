@@ -25,8 +25,8 @@ CREATE TABLE "todos" (
     "content" TEXT, --optional
     "priority" INTEGER CHECK("priority" IN (1, 2, 3, 4)), -- lower no. ==> higher priority -- optional
     "reminder" DATETIME, -- optional
-    "estimated_hours" NUMERIC, -- optional
-    "estimated_minutes" NUMERIC, -- optional
+    "estimated_hours" NUMERIC NOT NULL,
+    "estimated_minutes" NUMERIC NOT NULL,
     PRIMARY KEY("id")
 );
 
