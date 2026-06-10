@@ -62,11 +62,11 @@ to-do ==> daily tasks clarity (just the day's tasks) with estimated time-taken
 
     <form action="/todo" method="post">
         <div class="styleclass">
-            <input class="styleclass" name="todo-title" type="text" placeholder="What do you want to do today?" autofocus autocomplete="off">
+            <input class="styleclass" name="title" type="text" placeholder="What do you want to do today?" autofocus autocomplete="off">
         </div>
         <div class="styleclass">
             <!-- todo-body class -->
-            <textarea class="styleclass todo-body">Body</textarea>
+            <textarea class="styleclass todo-body" placeholder="Content"></textarea>
         </div>
         <div class="est-time-taken">
             <input class="styleclass" name="estimated-time-taken" type="number" min="1" max="12" placeholder="Rough Estimation of time taken" autofocus autocomplete="off">
