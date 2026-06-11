@@ -1,4 +1,12 @@
+CREATE TABLE "users" (
+    "id" INTEGER,
+    "username" TEXT UNIQUE NOT NULL,
+    "password_hash" TEXT NOT NULL,
+    PRIMARY KEY("id")
+);
+
 CREATE TABLE "logs" (
+    "user_id" INTEGER,
     "id" INTEGER,
     "logged_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
     "title" TEXT NOT NULL,
@@ -11,11 +19,13 @@ CREATE TABLE "logs" (
     "end_time" TEXT, -- optional
     "time_taken_hours" NUMERIC, -- optional
     "time_takn_minutes" NUMERIC, -- optional
-    PRIMARY KEY("id")
+    PRIMARY KEY("id"),
+    FOREIGN KEY("user_id") REFERENCES "users"("id") ON DELETE CASCADE
 );
 
 -- keep the to_do as simple as possible, kinda like "Grit App"
 CREATE TABLE "todos" (
+    "user_id" INTEGER,
     "id" INTEGER,
     "created_at" DATETIME DEFAULT CURRENT_TIMESTAMP, -- enforce no changes after 1st insertion using triggers
     "modified_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -27,10 +37,12 @@ CREATE TABLE "todos" (
     "reminder" DATETIME, -- optional
     "estimated_hours" NUMERIC NOT NULL,
     "estimated_minutes" NUMERIC NOT NULL,
-    PRIMARY KEY("id")
+    PRIMARY KEY("id"),
+    FOREIGN KEY("user_id") REFERENCES "users"("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "notes" (
+    "user_id" INTEGER,
     "id" INTEGER,
     "created_at" DATETIME DEFAULT CURRENT_TIMESTAMP, -- enforce no changes after 1st insertion using triggers
     "modified_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -38,7 +50,8 @@ CREATE TABLE "notes" (
     -- programatically ensure the data entered is with precisely entered helping me gain clarity
     "content" TEXT,
     "tag" TEXT,
-    PRIMARY KEY("id")
+    PRIMARY KEY("id"),
+    FOREIGN KEY("user_id") REFERENCES "users"("id") ON DELETE CASCADE
 );
 
 CREATE TRIGGER "prevent_created_at_update_notes"
