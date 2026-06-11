@@ -49,7 +49,7 @@ BEGIN
 END;
 
 CREATE TRIGGER "prevent_created_at_update_todos"
-BEFORE UPDATE ON "created_at" ON "todos"
+BEFORE UPDATE OF "created_at" ON "todos"
 FOR EACH ROW
 BEGIN
     SELECT RAISE(ABORT, "created_at is immutabe");
