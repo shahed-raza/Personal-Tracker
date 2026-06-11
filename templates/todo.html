@@ -35,7 +35,12 @@ to-do ==> daily tasks clarity (just the day's tasks) with estimated time-taken
         </tbody>
     </table>
 
-
+    <!-- TODO: calculate time left using client-side javascript
+        * take the input, attach a event listener and validate the input
+        * do the calculation
+        * add an event listener to the form below where an estimated time taken of the task is provided
+        * validate and then update the time-left by reducing for each succesive tasks
+    -->
     <form action="/todo" method="post">
         <div class="styleclass">
             <input class="styleclass" name="time-left" type="number" min="1" max="12" placeholder="Time duration You have left" autofocus autocomplete="off">
